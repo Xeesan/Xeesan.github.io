@@ -109,21 +109,51 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== CONTACT FORM HANDLER =====
     const contactForm = document.getElementById('contactForm');
 
-    contactForm.addEventListener('submit', function (e) {
+    contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const btn = this.querySelector('button[type="submit"]');
         const originalContent = btn.innerHTML;
 
-        btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
-        btn.style.background = 'var(--green)';
+        // Visual loading state
+        btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
         btn.disabled = true;
 
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        const endpoint = this.getAttribute('action');
+
+        try {
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                // Success state
+                btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
+                btn.style.background = 'var(--green)';
+                this.reset();
+            } else {
+                // Error state
+                btn.innerHTML = 'Error! <i class="fas fa-exclamation-triangle"></i>';
+                btn.style.background = '#ff3860';
+            }
+        } catch (error) {
+            btn.innerHTML = 'Error! <i class="fas fa-exclamation-triangle"></i>';
+            btn.style.background = '#ff3860';
+            console.error('Formspree Error:', error);
+        }
+
+        // Reset button after 3 seconds
         setTimeout(() => {
             btn.innerHTML = originalContent;
             btn.style.background = '';
             btn.disabled = false;
-            this.reset();
         }, 3000);
     });
 
