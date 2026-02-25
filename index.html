@@ -75,7 +75,7 @@
                                     zsh</span></p>
                             <p><span class="t-key">Terminal</span><span class="t-sep">:</span> <span class="t-val">ssh ·
                                     tmux · vim · htop</span></p>
-                            <p><span class="t-key">Tools</span><span class="t-sep">:</span> <span class="t-val">nmap ·
+                            <p><span class="t-key">Tools</span><span class="t-sep">:</span> <span class="t-val">
                                     traceroute · nslookup · ping</span></p>
                             <p><span class="t-key">CPU</span><span class="t-sep">:</span> <span class="t-val">Embedded
                                     Net Eng @ 100%</span></p>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <p class="terminal-cmd"><span class="t-prompt">➜</span> <span class="t-dir">~</span> ip a show
-                        eth0</p>
+                        eth0<span class="terminal-cursor">█</span></p>
                 </div>
             </div>
             <div class="hero-content">
@@ -550,17 +550,18 @@
                         </div>
                     </a>
                 </div>
-                <form class="contact-form fade-in" id="contactForm">
+                <form action="https://formspree.io/f/mnjbwqlq" method="POST" class="contact-form fade-in"
+                    id="contactForm">
                     <div class="form-group">
-                        <input type="text" id="formName" placeholder=" " required>
+                        <input type="text" name="name" id="formName" placeholder=" " required>
                         <label for="formName">Your Name</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="formEmail" placeholder=" " required>
+                        <input type="email" name="email" id="formEmail" placeholder=" " required>
                         <label for="formEmail">Your Email</label>
                     </div>
                     <div class="form-group">
-                        <textarea id="formMessage" placeholder=" " rows="5" required></textarea>
+                        <textarea name="message" id="formMessage" placeholder=" " rows="5" required></textarea>
                         <label for="formMessage">Message</label>
                     </div>
                     <button type="submit" class="btn btn--primary btn--full">

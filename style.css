@@ -465,6 +465,12 @@ a {
     text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
 }
 
+.terminal-cursor {
+    color: var(--text-primary);
+    animation: blink 1s step-end infinite;
+    opacity: 0.8;
+}
+
 @keyframes blink {
 
     0%,
@@ -1416,6 +1422,7 @@ a {
 
     .hero-role {
         justify-content: center;
+        width: 100%;
     }
 
     .collab-badge {
@@ -1459,9 +1466,11 @@ a {
         right: -100%;
         width: 260px;
         height: 100vh;
-        background: rgba(10, 14, 23, 0.97);
+        background: rgba(10, 14, 23, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
         padding: 80px 28px 28px;
         gap: 4px;
         transition: all 0.4s var(--ease);
@@ -1478,7 +1487,8 @@ a {
         width: 100vw;
         height: 100vh;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 998;
+        z-index: -1;
+        pointer-events: none;
     }
 
     .nav-menu.active {
@@ -1486,9 +1496,17 @@ a {
     }
 
     .nav-link {
+        display: block;
         font-size: 1rem;
         padding: 12px 16px;
         width: 100%;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .nav-link--cta {
+        margin-top: 10px;
+        text-align: center;
     }
 
     .hero {
