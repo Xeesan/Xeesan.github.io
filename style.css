@@ -1086,8 +1086,9 @@ a {
 
 .timeline-marker {
     position: absolute;
-    left: -40px;
+    left: -25px;
     top: 6px;
+    transform: translateX(-50%);
 }
 
 .timeline-dot {
@@ -1559,7 +1560,7 @@ a {
     }
 
     .timeline-marker {
-        left: -30px;
+        left: -21px;
     }
 
     .timeline-content {
